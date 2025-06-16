@@ -8,10 +8,6 @@ import (
 )
 
 func ModifyTaskInTaskwarrior(uuid, description, project, priority, status, due, email, encryptionSecret, taskID string, tags []string) error {
-	if err := utils.ExecCommand("rm", "-rf", "/root/.task"); err != nil {
-		fmt.Println("1")
-		return fmt.Errorf("error deleting Taskwarrior data: %v", err)
-	}
 	tempDir, err := os.MkdirTemp("", "taskwarrior-"+email)
 	if err != nil {
 		fmt.Println("2")
